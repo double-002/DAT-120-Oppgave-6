@@ -11,6 +11,7 @@ def comma_to_dot(comma):
 
 float_temperatur = comma_to_dot(temperatur1)
 
+
 def temperature_average(temp, n):
     running_avg = []
     for i in range(len(temp)):
@@ -23,6 +24,11 @@ def temperature_average(temp, n):
 
 temp_avg = temperature_average(float_temperatur, 30)
 
+
+
+
+
+
 valid_indices = [i for i in range(len(temp_avg)) if temp_avg[i] is not None]
 valid_dates = [dato_tid1_dt[i] for i in valid_indices]
 valid_avg = [temp_avg[i] for i in valid_indices]
@@ -31,6 +37,7 @@ plt.figure(figsize=(10, 5))
 plt.plot(dato_tid1_dt, float_temperatur, label = "Temperatur", color = "blue")
 plt.plot(datetime_MET, Lufttemp_MET, label = "Temperatur MET", color = "green")
 plt.plot(valid_dates, valid_avg,  label = "Gjennomsnittstemperatur", color = "orange")
+plt.plot(dato_tid1_dt[1130:4572:3441], float_temperatur[1130:4572:3441], label = "Temperaturfall", color = "purple")
 
 plt.ylim(8,24)
 
