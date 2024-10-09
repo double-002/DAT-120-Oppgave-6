@@ -38,3 +38,5 @@ plt.ylabel("Temperatur i °C")
 plt.legend()
 plt.savefig("Temperatur_plot.png")
 plt.show()
+
+print(len(dato_tid1_dt))

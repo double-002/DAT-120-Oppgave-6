@@ -2,7 +2,7 @@ import datetime as dt
 
 
 #startverdi = 0
-sluttverdi = 45700
+sluttverdi = 121000
 
 
 #startverdi_str = str(startverdi)
@@ -45,5 +45,5 @@ def fil1data(sluttverdi_str):
 tid_fra_start1, dato_tid1_str, dato_tid1_dt, trykk_bar1, abs_trykk1, temperatur1 = fil1data(sluttverdi_str)
 
 
-
+print(len(dato_tid1_dt))
 
