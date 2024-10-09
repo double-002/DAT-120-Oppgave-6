@@ -2,7 +2,7 @@ import datetime as dt
 
 
 #startverdi = 0
-sluttverdi = 121000
+sluttverdi = 121000 #rett før endring i datoformat
 
 
 #startverdi_str = str(startverdi)
@@ -43,7 +43,3 @@ def fil1data(sluttverdi_str):
             return tid_fra_start1, dato_tid1_str, dato_tid1_dt, trykk_bar1, abs_trykk1, temperatur1
 
 tid_fra_start1, dato_tid1_str, dato_tid1_dt, trykk_bar1, abs_trykk1, temperatur1 = fil1data(sluttverdi_str)
-
-
-print(len(dato_tid1_dt))
-
