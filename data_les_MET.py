@@ -29,7 +29,7 @@ def fil2data():
         
     return datetime_MET, Lufttemp_MET, Lufttrykk_Havniv_MET
 
-#a, b, c = fil2data()
+datetime_MET, Lufttemp_MET, Lufttrykk_Havniv_MET = fil2data()
 
 #plt.subplot(2,1,1)
 #plt.plot(a,b)
