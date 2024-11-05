@@ -29,11 +29,12 @@ valid_indices = [i for i in range(len(temp_avg)) if temp_avg[i] is not None]
 valid_dates = [dato_tid1_dt[i] for i in valid_indices]
 valid_avg = [temp_avg[i] for i in valid_indices]
 
-plt.subplot(2,1,1)
+plt.subplot(3,1,1)
 plt.plot(dato_tid1_dt, float_temperatur, label = "Temperatur", color = "blue")
 plt.plot(valid_dates, valid_avg,  label = "Gjennomsnittstemperatur", color = "orange")
 plt.plot(datetime_MET, Lufttemp_MET, label = "Temperatur MET", color = "green")
 plt.plot(dato_tid1_dt[1130:4572:3441], float_temperatur[1130:4572:3441], label = "Temperaturfall", color = "purple")
+plt.plot(datetime_MET[17:28:10], Lufttemp_MET[17:28:10], label = "Temperaturfall MET", color = "magenta")
 plt.ylabel("Temperatur i °C")
 plt.legend()
 
@@ -52,9 +53,24 @@ abstrykk_float = comma_to_dot(abs_trykk1)
 abstrykk_float =[tall*10 for tall in abstrykk_float]
 trykk1_float =[tall*10 for tall in trykk1_float]
 
-plt.subplot(2,1,2)
+plt.subplot(3,1,2)
 plt.plot(dato_tid1_dt, abstrykk_float, label='Absolutt trykk')
 plt.plot(datetime_new,trykk1_float, label='Barometrisk Trykk')
 plt.plot(datetime_MET,Lufttrykk_Havniv_MET, label='Absolutt trykk MET')
 plt.legend()
+
+#Histogram med relativ frekvens, fjern density=True for vanlig histogram
+hist_temp = Lufttemp_MET + float_temperatur
+
+plt.subplot(3,1,3)
+plt.hist(Lufttemp_MET, bins=range(int(min(hist_temp)), int(max(hist_temp)) + 2), 
+        density=True, label="Temperatur MET" , color="blue", alpha=0.7)
+plt.hist(float_temperatur, bins=range(int(min(hist_temp)), int(max(hist_temp)) + 2), 
+        density=True, label="Temperatur" , color="red", alpha=0.7)
+plt.xlabel("Temperatur i hele grader (°C)")
+plt.ylabel("Relativ frekvens")
+plt.xticks(np.arange(min(hist_temp), max(hist_temp) + 1, 1))
+plt.legend()
+
+
 plt.show()
