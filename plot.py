@@ -3,14 +3,17 @@ import matplotlib.ticker as ticker
 import numpy as np
 from Fil1_Aapning import dato_tid1_dt , temperatur1 , trykk_bar1 , abs_trykk1
 from data_les_MET import datetime_MET, Lufttemp_MET , Lufttrykk_Havniv_MET
-
+from sauda_og_sinnes_leser import date_time2, sirdal_temp, sirdal_trykk, sauda_temp, sauda_trykk
 temp_avg = []
 
 def comma_to_dot(comma):
     return [float(value.replace(',', '.')) for value in comma]
 
 float_temperatur = comma_to_dot(temperatur1)
-
+sirdal_temp1 = comma_to_dot(sirdal_temp)
+sirdal_trykk1 = comma_to_dot(sirdal_trykk)
+sauda_temp1 = comma_to_dot(sauda_temp)
+sauda_trykk1 = comma_to_dot(sauda_trykk)
 
 def temperature_average(temp, n):
     running_avg = []
@@ -35,6 +38,8 @@ plt.plot(valid_dates, valid_avg,  label = "Gjennomsnittstemperatur", color = "or
 plt.plot(datetime_MET, Lufttemp_MET, label = "Temperatur MET", color = "green")
 plt.plot(dato_tid1_dt[1130:4572:3441], float_temperatur[1130:4572:3441], label = "Temperaturfall", color = "purple")
 plt.plot(datetime_MET[17:28:10], Lufttemp_MET[17:28:10], label = "Temperaturfall MET", color = "magenta")
+plt.plot(date_time2, sirdal_temp1, label = "Sirdal temperatur")
+plt.plot(date_time2, sauda_temp1, label = "Sauda temperatur")
 plt.ylabel("Temperatur i °C")
 plt.legend()
 
@@ -57,6 +62,8 @@ plt.subplot(4,1,2)
 plt.plot(dato_tid1_dt, abstrykk_float, label='Absolutt trykk')
 plt.plot(datetime_new,trykk1_float, label='Barometrisk Trykk')
 plt.plot(datetime_MET,Lufttrykk_Havniv_MET, label='Absolutt trykk MET')
+plt.plot(date_time2, sirdal_trykk1, label = "Sirdal trykk")
+plt.plot(date_time2, sauda_trykk1, label = "Sauda trykk")
 plt.legend()
 
 #Histogram med relativ frekvens, fjern density=True for vanlig histogram
